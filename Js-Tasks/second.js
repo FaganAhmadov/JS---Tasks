@@ -18,19 +18,6 @@
 //   i++;
 // }
 
-// task-- verdiyimiz strinde reqem olub olmamasi
-// let str = "holla1";
-// let i = 0;
-// let result = "reqem yoxdur";
-// while (i < str.length) {
-//   if (+str[i] && str[i] !== " ") {
-//     result = "reqem var";
-//     break;
-//   }
-//   i++;
-// }
-// console.log(result);
-
 // sozu tersine cevirme for ile
 
 // let str = "hello world";
@@ -146,10 +133,10 @@
 //   result = result * i;
 // }
 // console.log(result);
-// a *= b -----// a = a * b
-// a += b -----// a = a + b
-// a -= b -----// a = a - b
-// a /= b -----// a = a / b
+//============================================================================================= a *= b -----// a = a * b============================================================================
+//============================================================================================= a += b -----// a = a + b============================================================================
+//============================================================================================= a -= b -----// a = a - b============================================================================
+//============================================================================================= a /= b -----// a = a / b============================================================================
 
 // sozu tersine cevirme taks8
 //let str = prompt('metin daxil edin');
@@ -168,15 +155,100 @@
 // let lastIndex = str.length - 1;
 // let result = "";
 // for (let i = 0; i < str.length; i++) {
-    // result += str[lastIndex - i];
+// result += str[lastIndex - i];
 // }
 // console.log(result);
-
 
 // 2 ci usul task - 8
 
 // let str = prompt("metin daxil edin");
 // let result = "";
 // for (let i = str.length - 1; i >= 0; i--) {
-//   result += str[i];
+// result += str[i];
+// }
+// console.log(result);
+
+// task- 9???????????????????????????????????????
+// let str = prompt("Metni daxil edin");
+// let index = -1;
+
+// for (let i = 0; i < str.length; i++) {
+//     if (str[i] === ".") {
+//         index = i;
+//         break;
+//     }
+// }
+// console.log(index);
+
+// task-10
+// let str = prompt('metn daxil et')
+// let result = 'reqem yoxdur'
+// for (let i = 0; i < str.length; i++) {
+//     if (+str[i] && str[i]) {
+//         result = 'reqem-var'
+//         break;
+//     }
+// }
+// console.log(result);
+
+
+// task--10 verdiyimiz strinde reqem olub olmamasi while
+// let str = "holla1";
+// let i = 0;
+// let result = "reqem yoxdur";
+// while (i < str.length) {
+//   if (+str[i] && str[i] !== " ") {
+//     result = "reqem var";
+//     break;
+//   }
+//   i++;
+// }
+// console.log(result);
+
+
+// task-11
+// --------------------------------
+// Palindrom olub olmadigini yoxlamaq
+// let value = "salam";
+// let result = "palindromdur";
+// for (let i = 0; i < value.length / 2; i++) {
+//     if (value[i] !== value[value.length - 1 - i]) {
+//         result = "palindrom deyil";
+//         break;
+//     }
+// }
+// console.log(result);
+
+// task-12
+// for (let i = 100; i <= 550; i++) {
+//     if (i % 5 === 2) {
+//         console.log(i);
+//     }
+// }
+
+// task-13 
+// let str = prompt('en azi 2 reqmli eded daxil edin')
+// let result = 0
+// for (let i = 0; i < str.length; i++) {
+//     result += Number(str[i]);
+// }
+// console.log(result);
+
+// task-14
+// let num = Number(prompt('eded daxil edin'))
+// for (let i = num; i >= 1; i--) {
+//     if (num % i === 0) {
+//         console.log(i);
+//     }
+// }
+
+
+
+
+
+// task-15
+// for (let i = 1; i <= 30; i++) {
+//     if (i % 5 === 0 && i % 3 === 0) {
+//         console.log(i);
+//     }
 // }
