@@ -542,18 +542,30 @@ const datas = [
 ];
 const cards = document.getElementById("cards");
 const paginations = document.querySelector(".pagination");
+const quickviewSec = document.getElementById("quick-view");
+const quickBasket = document.getElementById("quick-basket");
+const basketBtn = document.getElementById("basket-btn");
+const cardListElem = document.getElementById("card-list");
+const basketCount = document.getElementById("basket-count");
+const TotalPriceElem = document.getElementById("Total-price");
+const emptyBasketBtn = document.getElementById("emptyBasket");
+
+let cardList = []
 let start = 0;
 let end = 12;
 render();
+let globalData = [...datas];
 
-function render() {
+function render(list = datas) {
   cards.innerHTML = "";
-  datas.slice(start, end).forEach((item) => {
+  list.slice(start, end).forEach((item) => {
     cards.innerHTML += `
-   <div class="card">
+        <div class="card" >
             <div>
                 <div class="back-img">
-                   <img src="${item.img}" onerror="this.src='./download.png'">
+                    <img 
+                    onclick="quickView('${item.id}')"
+                    src="${item.img}" onerror="this.src='./download.png'">
                 </div>
                 <!-- card-main -->
                 <div class="main">
@@ -562,9 +574,8 @@ function render() {
                     <p>${item.price}-USD <span>stok:var</span></p>
                     <div class="main-bottom">
                         <div>
-                            <button>Al <i class="fa-solid fa-arrow-right"></i></button>
+                            <button class="cursor-pointer bg-violet-200 p-[7px_15px]" onclick="addToCard('${item.id}')">ADD</button>
                         </div>
-                        <button>Detallar</button>
                     </div>
                 </div>
             </div>
@@ -572,19 +583,143 @@ function render() {
 `;
   });
 }
-let totalPages = datas.length / 10;
-for (let i = 1; i < totalPages; i++) {
-  paginations.innerHTML += `
+genetarePagination();
+
+function genetarePagination() {
+  paginations.innerHTML = "";
+  let totalPages = Math.ceil(globalData.length / 12);
+  for (let i = 1; i <= totalPages; i++) {
+    paginations.innerHTML += `
         <button class="page-btn" onclick=' getPagination(${i})' >${i}</button>
     `;
+  }
 }
 
-function getPagination(pageNum) {
+function getPagination(pageNum = 1) {
   start = (pageNum - 1) * 12;
   end = pageNum * 12;
-  render();
+  render(globalData);
   window.scrollTo({
     top: 0,
     behavior: "smooth",
   });
 }
+
+const serchInput = document.getElementById("searchInput");
+serchInput.addEventListener("input", () => {
+  const filteredList = datas.filter((item) =>
+    item.name
+      .toLocaleLowerCase()
+      .includes(serchInput.value.trim().toLocaleLowerCase()),
+  );
+  globalData = filteredList;
+  genetarePagination();
+  getPagination(1);
+});
+
+function quickView(id) {
+  quickviewSec.classList.replace("hidden", "flex");
+  const foundItem = datas.find(item => item.id === id)
+  quickviewSec.innerHTML = `
+        <div class="grid lg:grid-cols-3   items-center justify-center gap-7 max-w-[700px] bg-white p-[20px]">
+            <div>
+                <img src="${foundItem.img}"
+                    alt=""  onerror="this.src='./download.png'" >
+            </div>
+            <div>
+                <h2> <b>Name:</b>  ${foundItem.name}</h2>
+                <p> <b>Desc: </b> ${foundItem.dsc}</p>
+                <p> <b>Price:</b>  ${foundItem.price} USD</p> 
+            </div>
+        </div>
+  `;
+}
+
+quickviewSec.addEventListener("click", (e) => {
+  if (e.target === quickviewSec) {
+    quickviewSec.classList.replace("flex", "hidden");
+  }
+});
+
+function cardListRender() {
+  cardListElem.innerHTML = ""
+  cardList.forEach(item => cardListElem.innerHTML += `
+                <li class="flex  gap-4 items-center shadow-md p-3 rounded-md ">
+                    <img src="${item.img}"
+                        alt="" class="w-[100px] h-[100px] object-cover "
+                        onerror="this.src='./download.png'"
+                        >
+                    <div class='w-[100%]' >
+                      <div class='flex justify-between' style=" margin-bottom: 10px;" >
+                        <h4>Name:${item.name.slice(0, 5)}...</h4>
+                        <button class="bg-blue-400 px-[10px]" onclick="deleteCrop('${item.id}')" >Del</button>
+                      </div>
+                        <div class="flex justify-between ">
+                            <p>Price: ${item.price * item.count}</p>
+                            <div class="flex gap-2">
+                                <button class="bg-blue-400 px-[8px]" onclick="decreaseCount('${item.id}')" >-</button>
+                                <span>${item.count}</span>
+                                <button class="bg-blue-400 px-[8px]" onclick="increaseCount('${item.id}')" >+</button>
+                            </div>
+                        </div>  
+                    </div>
+                </li>
+  ` )
+  TotalPriceElem.innerHTML = cardList.reduce((acc, item) => acc += item.count * item.price, 0)
+}
+
+basketBtn.addEventListener('click', () => {
+  quickBasket.classList.remove('hidden')
+  cardListRender()
+  if (cardListElem.clientHeight >= 550) {
+    cardListElem.classList.add("overflow-y-scroll", "max-h-[550px]")
+  }
+})
+
+quickBasket.addEventListener('click', (e) => {
+  if (e.target === quickBasket) {
+    quickBasket.classList.add('hidden')
+  }
+})
+
+function addToCard(id) {
+  const foundItemInCardList = cardList.find(item => item.id === id)
+  if (foundItemInCardList) {
+    foundItemInCardList.count++
+  } else {
+    const foundItem = datas.find(item => item.id === id)
+    cardList.push({
+      ...foundItem,
+      count: 1
+    });
+    basketCount.innerHTML = cardList.length
+  }
+
+}
+
+function increaseCount(id) {
+  const foundItem = cardList.find(item => item.id === id)
+  foundItem.count++
+  cardListRender()
+}
+
+function decreaseCount(id) {
+  const foundItem = cardList.find(item => item.id === id)
+  if (foundItem.count > 1) {
+    foundItem.count--
+  } else {
+    cardList = cardList.filter(item => item.id !== id)
+  }
+  cardListRender()
+}
+
+function deleteCrop(id) {
+  const foundItem = cardList.find(item => item.id === id)
+  cardList = cardList.filter(item => item.id !== id)
+  cardListRender()
+}
+
+emptyBasketBtn.addEventListener('click', () => {
+  cardList = []
+  cardListRender()
+})

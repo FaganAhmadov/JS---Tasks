@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-1 nav-bar">
+        <h3>Pizza-Mizza</h3>
+        <input id="searchInput" type="text">
+    </div>
+    <div id="cards" class="cards">
+    </div>
+    <div class="pagination">
+    </div>
+
+    <section id="quick-view"
+        class=" bg-[#00000092] fixed inset-0 hidden backdrop-blur-[10px] justify-center items-center transition-all duration-300 ">
+    </section>
+
+
+    <div id="basket-btn" class="bg-white p-[5px] rounded-md shadow-lg fixed right-4 bottom-[45%] m-[50px] ">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQahVoH7QkoRx3dTeNW6PX0Y2TP0Z9G-AhaBw&s" alt=""
+            class="w-[60px] h-[60px]">
+        <span id="basket-count"
+            class="absolute w-[25px] h-[25px] text-center right-[0px] top-[45px] rounded-[50%] bg-[#e4bf13]  "></span>
+    </div>
+
+    <section id="quick-basket" class=" hidden bg-[#00000092] fixed inset-0 backdrop-blur-[10px] ">
+        <div class="w-[400px] bg-white shadow-2xl h-full p-7">
+            <h2 class="text-[20px] font-bold mb-[10px] ">Quick Basket</h2>
+            <ul class=" flex flex-col gap-4 " id="card-list"></ul>
+            <div>
+                <h2 class="font-bold text-[30px] mt-[30px]">Total-Price:
+                    <span id="Total-price"></span>
+                </h2>
+                <button class="bg-red-900 text-white p-[15px_30px]" id="emptyBasket" >Empty Basket</button>
+            </div>
+        </div>
+    </section>
+    <script src="./main.js"></script>
+</body>
+
+</html>
