@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="max-w-[800px] mx-auto w-[80%] my-10  flex gap-10 flex-col  ">
+        <div class=" shadow-lg p-4  border-t border-t-[#ccc]">
+            <input id="todoInput" class="w-full p-3 border border-[#ccc]  outline-none "></input>
+        </div>
+        <div class=" shadow-md p-4 border-t border-t-[#ccc]">
+            <div class="flex  justify-between items-center border-b  border-t-[#ccc] mb-4 toggleBtn cursor-pointer">
+                <h3 class="uppercase">Continue</h3>
+                <i class="fa-solid fa-angle-up"></i>
+            </div>
+            <div class="flex flex-col gap-6 " id="continueToDos">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZibtnwgnvNAHfnFae3vVZqs-Twcvpq3yPUw&s"
+                    alt="" class="w-[100px] mx-auto ">
+            </div>
+        </div>
+        <div class=" shadow-md p-4 flex flex-col gap-6 border-t border-t-[#ccc]  cursor-pointer ">
+            <div class="flex  justify-between items-center border-b  border-t-[#ccc] mb-4 toggleBtn">
+                <h3 class="uppercase">Complatet</h3>
+                <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <div class="shadow-sm flex flex-col gap-5 p-3" id="complatedTodos">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZibtnwgnvNAHfnFae3vVZqs-Twcvpq3yPUw&s"
+                    alt="" class="w-[100px] mx-auto ">
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
