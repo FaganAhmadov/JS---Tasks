@@ -125,7 +125,7 @@ audio.addEventListener('timeupdate', () => {
     let time = audio.currentTime;
     let minute = Math.floor(time / 60);
     let second = Math.floor(time % 60);
-    currentTime.innerHTML = `${minute < 10 ? '0' + minute : minute}  :  ${second < 10 ? '0' + second : second}`
+    currentTime.innerHTML = `${minute < 10 ? '0' + minute : minute} : ${second < 10 ? '0' + second : second}`
 })
 
 audio.addEventListener("ended", () => {
