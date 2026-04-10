@@ -3,6 +3,7 @@ const addFormBtn = document.getElementById('addForm');
 const companyNameinp = document.getElementById('companyName');
 const contactTitleinp = document.getElementById('contactTitle');
 const url = 'https://northwind.vercel.app/api/suppliers/'
+
 async function getData() {
     const res = await axios(url)
     elems.innerHTML = ''
@@ -22,7 +23,7 @@ async function getData() {
             class="mt-3 bg-red-500 hover:bg-red-700 text-white rounded-xl py-2 transition">
             Delete
         </button>
-        <button  onclick='editCrop(${element.id})'
+        <button   onclick='editCrop(${element.id})'
             class="mt-3 bg-red-500 hover:bg-red-700 text-white rounded-xl py-2 transition">
             Edit
         </button>
@@ -61,6 +62,7 @@ addFormBtn.addEventListener('submit', (e) => {
 })
 
 
-const editCrop = (id) => {
+async function editCrop(id) {
+    const res = await axios(url + id)
 
 }

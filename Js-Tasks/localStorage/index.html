@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .light,
+        .light * {
+            background-color: white;
+            color: #000;
+        }
+
+        .dark,
+        .dark * {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="modeButton"></button>
+    <div class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sapiente quod labore
+        aspernatur ad non atque eligendi dolores placeat, consectetur minima, mollitia sunt. Sapiente, similique
+        suscipit quae eum corrupti corporis?</div>
+
+    <script>
+        const modeButton = document.getElementById('modeButton')
+        let mode = localStorage.getItem('mode')
+
+        const defineMode = () => {
+            if (mode === "light") {
+                document.body.className = 'light'
+                modeButton.innerText = '🌛'
+            } else {
+                document.body.className = 'dark'
+                modeButton.innerText = '☀'
+            }
+        };
+        defineMode();
+
+        modeButton.addEventListener('click', () => {
+            if (mode === "light") {
+                localStorage.setItem("mode", 'dark')
+            } else {
+                localStorage.setItem("mode", 'light')
+            }
+            mode = localStorage.getItem('mode');
+            defineMode();
+        })
+
+    </script>
+</body>
+
+</html>

@@ -84,7 +84,7 @@ async function editCompany(id) {
     }
 }
 
-    
+
 updateForm.addEventListener('submit', async (e) => {
     e.preventDefault()
     try {
@@ -113,7 +113,6 @@ updateForm.addEventListener('submit', async (e) => {
             updateModal.classList.replace('flex', 'hidden')
             updateForm.reset()
         }
-
     } catch (error) {
         console.log('update Company EER', error);
     }
