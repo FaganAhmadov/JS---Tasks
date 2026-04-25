@@ -230,7 +230,7 @@
 //     }
 //     return true;
 // }
-// console.log(isPalindrome('level'));
+// console.log(isPalindrome('salam'));
 
 // ---------------------------------------------------- task-15
 // function longestWord(txt) {
