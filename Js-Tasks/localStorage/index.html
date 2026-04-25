@@ -33,22 +33,21 @@
 
         const defineMode = () => {
             if (mode === "dark") {
-                document.body.className = 'light'
-                modeButton.innerText = '🌛'
-            } else {
                 document.body.className = 'dark'
                 modeButton.innerText = '☀'
+            } else {
+                document.body.className = 'light'
+                modeButton.innerText = '🌛'
             }
         };
-        defineMode();
-
+        defineMode()
         modeButton.addEventListener('click', () => {
-            if (mode === "light") {
-                localStorage.setItem("mode", 'dark')
+            if (mode === 'light') {
+                localStorage.setItem('mode', 'dark')
             } else {
-                localStorage.setItem("mode", 'light')
+                localStorage.setItem('mode', 'light')
             }
-            mode = localStorage.getItem('mode');
+            mode = localStorage.getItem('mode')
             defineMode();
         })
 
