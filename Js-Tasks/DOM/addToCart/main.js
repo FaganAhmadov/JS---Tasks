@@ -590,7 +590,7 @@ function genetarePagination() {
   let totalPages = Math.ceil(globalData.length / 12);
   for (let i = 1; i <= totalPages; i++) {
     paginations.innerHTML += `
-        <button class="page-btn" onclick=' getPagination(${i})' >${i}</button>
+        <button class="page-btn" onclick='getPagination(${i})' >${i}</button>
     `;
   }
 }
