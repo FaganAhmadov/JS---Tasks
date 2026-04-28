@@ -101,8 +101,6 @@
         </div>
     </div>
     <script>
-
-
         const cars = [
             {
                 "id": "1",
@@ -944,10 +942,11 @@
         let start = 0
         let end = 12
         let globalData = [...cars]
-        function renderCars() {
+
+        function render() {
             Allcards.innerHTML = ''
-            cars.slice(start, end).forEach((item) => {
-                Allcards.innerHTML += `
+            globalData.slice(start, end).forEach((item) => {
+                Allcards.innerHTML += ` 
     <div class="w-[280px] rounded-2xl overflow-hidden border bg-white shadow hover:shadow-lg transition">
         <!-- Şəkil -->
         <div class="relative">
@@ -971,7 +970,7 @@
 
         <!-- Alt hissə -->
         <div class="p-4 space-y-3">
-            
+
             <!-- Title + Price -->
             <div class="flex justify-between items-start gap-2">
                 <div>
@@ -1005,45 +1004,59 @@
 
         </div>
     </div>
-    `
+                
+                `
             })
         }
+        render()
 
-        renderCars()
-        generatePagination()
-
-        function generatePagination() {
-            paginations.innerHTML = ''
-            let totalPages = Math.ceil(cars.length / 12)
+        function generatePaginatin() {
+            let totalPages = Math.ceil(globalData.length / 12)
             for (let i = 1; i <= totalPages; i++) {
                 paginations.innerHTML += `<button onclick='getPagination(${i})' class="page-btn px-3 py-1 border rounded-lg bg-black text-white" >${i}</button>`
             }
         }
+        generatePaginatin(globalData)
 
-        function getPagination(pageNum = 1) {
+        function getPagination(pageNum) {
             start = (pageNum - 1) * 12
             end = pageNum * 12
-            renderCars(globalData)
-            window.scrollTo({
+            render()
+            window.scroll({
                 top: 0,
-                behavior: 'smooth'
+                behavior: "smooth"
             })
         }
 
         function fillSelect(data, key, selectElem) {
-            const uniqueValue = [...new Set(data.map(item => item[key]))]
-            uniqueValue.forEach(value => {
-                selectElem.innerHTML += `<option value="${value}">${value}</option>`
-            })
+            let uniqueValue = [...new Set(data.map(item => item[key]))]
+            uniqueValue.forEach(value => selectElem.innerHTML += `<option value='${value}'>${value}</option>`)
         }
-        fillSelect(cars, "brand", brandSelect)
-        fillSelect(cars, "model", modelSelect)
-        fillSelect(cars, "banType", banTypeSelect)
-        fillSelect(cars, "city", citySelect)
-        fillSelect(cars, "year", yearSelect)
+        fillSelect(cars, 'brand', brandSelect)
+        fillSelect(cars, 'model', modelSelect)
+        fillSelect(cars, 'banType', banTypeSelect)
+        fillSelect(cars, 'year', yearSelect)
+        fillSelect(cars, 'city', citySelect)
 
 
 
+        // selectedBrand
+        brandSelect.addEventListener('change', (e) => {
+            const selectedBrand = e.target.value
+            let filteredData = (selectedBrand) ? cars.filter(item => item.brand === selectedBrand) : cars
+
+            let models = [...new Set(filteredData.map(item => item.model))]
+            modelSelect.innerHTML = `<option value="">Model</option>`
+            models.forEach(model => {
+                modelSelect.innerHTML += `<option value="${model}">${model}</option>`
+            })
+            globalData = filteredData
+            start = 0
+            end = 12
+            paginations.innerHTML = ''
+            render()
+            generatePaginatin()
+        })
     </script>
 </body>
 
