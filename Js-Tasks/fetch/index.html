@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <div class="max-w-5xl mx-auto bg-white shadow-lg rounded-xl overflow-hidden">
+        <div class="flex justify-between items-center">
+            <input id="search" type="search" placeholder="Search..." class="w-100 px-4 py-2 text-sm border border-gray-300 rounded-lg outline-none
+            focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition
+            ">
+            <button id="create"
+                class="px-3 py-1 text-xs bg-blue-500 text-white rounded-lg hover:bg-blue-600">+create</button>
+        </div>
+        <table class=" bg-white w-full text-left">
+            <!-- Header -->
+            <thead class="bg-gray-200">
+                <tr>
+                    <th class="p-4">ID</th>
+                    <th class="p-4">Company Name</th>
+                    <th class="p-4">Contact Name</th>
+                    <th class="p-4">Contact Title</th>
+                    <th class="p-4 text-center">Actions</th>
+                </tr>
+            </thead>
+            <!-- Body -->
+            <tbody></tbody>
+        </table>
+    </div>
+
+
+    <div id="createModal" class="fixed inset-0 hidden items-center justify-center bg-black/30 backdrop-blur-sm">
+        <form id="createForm" class="w-full max-w-xl space-y-4 rounded-xl bg-white p-5 shadow">
+
+            <h2 class="text-lg font-semibold text-gray-800">Company Info</h2>
+
+            <!-- Company Name -->
+            <div>
+                <label class="text-xs text-gray-600">Company Name</label>
+                <input name="companyName" type="text" value="Plutzer Lebensmittelgroßmärkte AG"
+                    class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+            </div>
+
+            <!-- Contact Name -->
+            <div>
+                <label class="text-xs text-gray-600">Contact Name</label>
+                <input name="contactName" type="text" value="Martin Bein"
+                    class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+            </div>
+
+            <!-- Contact Title -->
+            <div>
+                <label class="text-xs text-gray-600">Contact Title</label>
+                <input name="contactTitle" type="text" value="International Marketing Mgr."
+                    class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+            </div>
+
+            <!-- Address -->
+            <div class="border-t pt-3">
+                <h3 class="mb-2 text-sm font-medium text-gray-700">Address</h3>
+
+                <div class="grid gap-3 md:grid-cols-2">
+
+                    <div>
+                        <label class="text-xs text-gray-600">Street</label>
+                        <input name="street" type="text" value="Bogenallee 51"
+                            class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-gray-600">City</label>
+                        <input name="city" type="text" value="Frankfurt"
+                            class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-gray-600">Region</label>
+                        <input name="region" type="text" value="NULL"
+                            class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-gray-600">Postal Code</label>
+                        <input name="postalCode" type="number" value="60439"
+                            class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-gray-600">Country</label>
+                        <input name="country" type="text" value="Germany"
+                            class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-gray-600">Phone</label>
+                        <input name="phone" type="text" value="(069) 992755"
+                            class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex justify-end pt-2">
+                <button type="submit" class="rounded-md bg-blue-600 px-3 py-1.5 text-sm text-white hover:bg-blue-700">
+                    Save
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+
+    <div id="updateModal" class="fixed inset-0 hidden items-center justify-center bg-black/30 backdrop-blur-sm">
+        <form id="updateForm" class="w-full max-w-xl space-y-4 rounded-xl bg-white p-5 shadow">
+
+            <h2 class="text-lg font-semibold text-gray-800"> Update Company Info</h2>
+
+            <!-- Company Name -->
+            <div>
+                <label class="text-xs text-gray-600">Company Name</label>
+                <input name="companyName" type="text" value=""
+                    class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+            </div>
+
+            <!-- Contact Name -->
+            <div>
+                <label class="text-xs text-gray-600">Contact Name</label>
+                <input name="contactName" type="text" value=""
+                    class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+            </div>
+
+            <!-- Contact Title -->
+            <div>
+                <label class="text-xs text-gray-600">Contact Title</label>
+                <input name="contactTitle" type="text" value=""
+                    class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+            </div>
+
+            <!-- Address -->
+            <div class="border-t pt-3">
+                <h3 class="mb-2 text-sm font-medium text-gray-700">Address</h3>
+
+                <div class="grid gap-3 md:grid-cols-2">
+
+                    <div>
+                        <label class="text-xs text-gray-600">Street</label>
+                        <input name="street" type="text" value=""
+                            class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-gray-600">City</label>
+                        <input name="city" type="text" value=""
+                            class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-gray-600">Region</label>
+                        <input name="region" type="text" value=""
+                            class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-gray-600">Postal Code</label>
+                        <input name="postalCode" type="number" value=""
+                            class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-gray-600">Country</label>
+                        <input name="country" type="text" value=""
+                            class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="text-xs text-gray-600">Phone</label>
+                        <input name="phone" type="text" value=""
+                            class="mt-1 w-full rounded-md border px-2 py-1.5 text-sm focus:ring-1 focus:ring-blue-500">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex justify-end pt-2">
+                <button type="submit" class="rounded-md bg-blue-600 px-3 py-1.5 text-sm text-white hover:bg-blue-700">
+                    Save
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>

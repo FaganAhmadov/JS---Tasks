@@ -1,6 +1,6 @@
 const display = document.querySelector('.display')
 const prevBtn = document.querySelector('.prevBtn')
-let last
+let last 
 async function getData() {
     const res = await fetch('https://api.thecatapi.com/v1/images/search')
     const data = await res.json()
@@ -13,6 +13,7 @@ async function getData() {
     });
 }
 getData()
+
 prevBtn.addEventListener('click', () => {
     if (last) {
         display.innerHTML = last

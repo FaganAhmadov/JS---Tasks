@@ -7,6 +7,8 @@ const updateForm = document.getElementById('updateForm')
 const search = document.getElementById('search')
 let selectedCompany;
 let globalData = []
+console.log(selectedCompany);
+
 
 
 
