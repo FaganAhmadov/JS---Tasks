@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="w-full bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <!-- Top Row -->
+            <div class="flex flex-wrap items-center gap-3">
+
+                <!-- Brand -->
+                <div class="text-lg font-semibold text-gray-900">
+                    AutoFilter
+                </div>
+
+                <!-- Brand Select -->
+                <select id="brandSelect"
+                    class="px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-black">
+                    <option>Brand</option>
+                </select>
+
+                <!-- Model -->
+                <select id="modelSelect"
+                    class="px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-black">
+                    <option>Model</option>
+                </select>
+
+                <!-- Ban Type -->
+                <select id="banType"
+                    class="px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-black">
+                    <option>Ban Type</option>
+                </select>
+
+                <!-- City -->
+                <select id="citySelect"
+                    class="px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-black">
+                    <option>City</option>
+                    <option>Bakı</option>
+                </select>
+
+                <!-- Year -->
+                <select id="yearSelect"
+                    class="px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-black">
+                    <option>Year</option>
+                    <option>2005</option>
+                </select>
+
+            </div>
+            <!-- Filter Row -->
+            <div class="mt-3 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+
+                <!-- Price -->
+                <input type="text" placeholder="Price (AZN)"
+                    class="px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" />
+
+                <!-- Odometer -->
+                <input type="text" placeholder="Odometer (km)"
+                    class="px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" />
+
+                <!-- Engine -->
+                <input type="text" placeholder="Engine (L)"
+                    class="px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" />
+
+                <!-- Credit -->
+                <select class="px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-black">
+                    <option>Credit</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+
+                <!-- Barter -->
+                <select class="px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-black">
+                    <option>Barter</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+
+                <!-- Currency -->
+                <select class="px-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-black">
+                    <option>Currency</option>
+                    <option>AZN</option>
+                </select>
+
+            </div>
+        </div>
+    </nav>
+    <div id="cards" class="max-w-7xl mx-auto p-4 flex flex-wrap gap-6 justify-center">
+    </div>
+    <div class="max-w-7xl mx-auto flex justify-center items-center gap-2 py-6">
+        <!-- Page Numbers -->
+        <div id="pageNumbers" class="flex gap-2">
+        </div>
+    </div>
+
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
